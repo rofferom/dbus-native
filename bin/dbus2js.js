@@ -2,7 +2,6 @@
 
 const fs = require('fs');
 const xml2js = require('xml2js');
-const xml2js_opts = Object.assign({}, xml2js.defaults["0.1"], { explicitArray: true });
 const dbus = require('../index');
 const optimist = require('optimist');
 
@@ -44,7 +43,7 @@ if (!argv.server) {
 
     var output = [];
 
-    var parser = new xml2js.Parser(xml2js_opts);
+    var parser = new xml2js.Parser({ explicitArray: true });
     parser.parseString(xml, function(err, result) {
       if (err) die(err);
 
